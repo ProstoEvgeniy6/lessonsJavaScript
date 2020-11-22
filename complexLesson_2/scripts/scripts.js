@@ -1,8 +1,16 @@
 let num = 266219;
+let result = '';
 
-num = num.toString().split('').reduce((ac, el) => {
-    return ac * el
-}, 1 );
+while ( num % 10 > 0.1 ) {
+    result += num % 10;
+    num = Number.parseInt( num / 10 );
+}
+
+num = 1;
+
+for ( let i = 0; i < result.length; i++ ) {
+    num *= +result[i];
+}
 
 console.log( num );
 

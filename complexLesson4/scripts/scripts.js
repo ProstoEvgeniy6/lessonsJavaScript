@@ -8,7 +8,7 @@ function someFunc( arg ) {
 
     let tempStr;
 
-    if( typeof( arg ) != 'string' ) {
+    if( typeof( arg ) !== 'string' || ! Number.isNaN( Number( arg.trim() ) ) ) {
         return alert('Аргумент функции - не строка.');
     }
     
@@ -22,5 +22,6 @@ function someFunc( arg ) {
 }
 
 console.log( someFunc(5) );
-console.log( someFunc('У попа была собака, он её любил.') );
-console.log( someFunc('У попа была собака.') );
+console.log( someFunc('     У попа была собака, он её любил.      ') );
+console.log( someFunc('             У попа была собака.             ') );
+console.log( someFunc( '      34235      ' ) );

@@ -9,11 +9,13 @@
     Запушить проект в репозиторий для усложненных заданий на GitHub    */
 
     let lang, flagLang, namePerson, flag = true;
-    const weekDaisRu = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'] ;
-    const weekDaisEn = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-    const multiRowsWeekDais = [['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'], 
-                            ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']];
-
+    
+    const collectionMap = new Map( [['monday', 'понедельник'], ['tuesday', 'вторник'], ['wednesday', 'среда'], ['thursday', 'четверг'], ['friday', 'пятница'], ['saturday', 'суббота'], ['sunday', 'воскресенье']] );
+    
+    console.log(collectionMap);
+    console.log(Array.from(collectionMap.keys()));
+    console.log(Array.from(collectionMap.values()));
+    
     function getLang() {
         flagLang = confirm('Вы выбираете русский язык?');
         return flagLang ? 'ru' : 'en';
@@ -25,9 +27,9 @@
         
         alert(lang);
         if( lang === 'ru' ) {
-            alert( weekDaisRu );
+            alert( Array.from(collectionMap.values()) );
         } else if( lang ==='en' ) {
-            alert( weekDaisEn );
+            alert( Array.from(collectionMap.keys()) );
         }
 
         alert('Попробуем те же операции, но через switch case');
@@ -35,10 +37,10 @@
         lang = getLang()
         switch( lang ) {
             case 'ru':
-                alert(weekDaisRu);
+                alert(Array.from(collectionMap.values()));
             break;
             case 'en':
-                alert(weekDaisEn);
+                alert(Array.from(collectionMap.keys()));
             break;
             default:
                 alert( 'Язык не понял' );
@@ -47,7 +49,8 @@
         alert('Попробуем те же операции, но через через многомерный массив без ифов и switch.');
         
         lang = getLang();
-        lang === 'ru' ? alert( multiRowsWeekDais[0] ) : alert( multiRowsWeekDais[1] );
+        // lang === 'ru' ? alert( multiRowsWeekDais[0] ) : alert( multiRowsWeekDais[1] );
+        lang === 'ru' ? alert( Array.from(collectionMap.values()) )   :  alert( Array.from(collectionMap.keys()) );
 
         tempFlag = true;
         while( tempFlag ) {
